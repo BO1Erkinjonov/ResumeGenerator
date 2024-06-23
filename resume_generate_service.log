@@ -1,0 +1,5 @@
+2024-06-23T21:31:34.392+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-23T21:31:42.194+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-23T21:31:42.195+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
