@@ -27,7 +27,7 @@ type RouteOption struct {
 // NewRoute
 // @title Generate resume
 // @version 1.7
-// @host :9050
+// @host 18.158.24.26:9050
 // @securityDefinitions.apikey ApiKeyAuth
 // @in header
 // @name Authorization
