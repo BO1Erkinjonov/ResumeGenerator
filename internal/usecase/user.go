@@ -9,6 +9,7 @@ type User interface {
 	CreateUser(ctx context.Context, user *entity.User) (*entity.User, error)
 	GetUserById(ctx context.Context, req *entity.FieldValueReq) (*entity.User, error)
 	CheckUniques(ctx context.Context, user *entity.FieldValueReq) (*entity.Result, error)
+	GetAllUsers(ctx context.Context, req *entity.GetAllUserReq) ([]*entity.User, error)
 }
 
 type userUseCase struct {

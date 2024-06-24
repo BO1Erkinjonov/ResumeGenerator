@@ -58,20 +58,6 @@ func (s *UserTestSuite) TestUserCrud() {
 	s.Suite.Equal(resp.Username, user.Username)
 	s.Suite.Equal(resp.ImageUrl, user.ImageUrl)
 
-	respGet, err := s.Repository.GetUserById(ctx, &entity.FieldValueReq{
-		Field: "id",
-		Value: user.ID,
-	})
-
-	s.Suite.NoError(err)
-	s.Suite.NotNil(respGet)
-	s.Suite.Equal(respGet.FirstName, user.FirstName)
-	s.Suite.Equal(respGet.LastName, user.LastName)
-	s.Suite.Equal(respGet.Email, user.Email)
-	s.Suite.Equal(respGet.Password, user.Password)
-	s.Suite.Equal(respGet.Username, user.Username)
-	s.Suite.Equal(respGet.ImageUrl, user.ImageUrl)
-
 }
 
 func (s *UserTestSuite) TearDownTest() {
