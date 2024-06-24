@@ -116,3 +116,40 @@ func (u *UserRepo) CheckUniques(ctx context.Context, req *entity.FieldValueReq) 
 	}
 	return &entity.Result{IsExists: false}, nil
 }
+
+func (u *UserRepo) GetAllUsers(ctx context.Context, req *entity.GetAllUserReq) ([]*entity.User, error) {
+	query, args, err := u.db.Sq.Builder.Select(u.userSelectQueryPrefix()).From(u.tableName).
+		Where(u.db.Sq.Equal(req.Field, req.Values)).Limit(req.Limit).Offset(req.Offset).ToSql()
+	if err != nil {
+		return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " all"))
+	}
+	rows, err := u.db.Query(ctx, query, args...)
+	if err != nil {
+		return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " all"))
+	}
+	defer rows.Close()
+	users := make([]*entity.User, 0)
+	for rows.Next() {
+		var user entity.User
+		err = rows.Scan(
+			&user.ID,
+			&user.FirstName,
+			&user.LastName,
+			&user.Email,
+			&user.Password,
+			&user.Username,
+			&user.ImageUrl,
+			&user.CreatedAt,
+			&user.UpdatedAt)
+		if err != nil {
+			return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " all"))
+		}
+		users = append(users, &user)
+
+	}
+	if err := rows.Err(); err != nil {
+		return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " all"))
+	}
+
+	return users, nil
+}

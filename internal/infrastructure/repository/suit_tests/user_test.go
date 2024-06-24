@@ -2,6 +2,7 @@ package suit_tests
 
 import (
 	"context"
+	"fmt"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/suite"
 	"log"
@@ -57,6 +58,16 @@ func (s *AnimalTypesTestSuite) TestAnimalTypesCrud() {
 	s.Suite.Equal(resp.Password, user.Password)
 	s.Suite.Equal(resp.Username, user.Username)
 	s.Suite.Equal(resp.ImageUrl, user.ImageUrl)
+
+	all, err := s.Repository.GetAllUsers(ctx, &entity.GetAllUserReq{
+		Field:  "first_name",
+		Values: "Test first name",
+		Limit:  20,
+		Offset: 0,
+	})
+	s.Suite.NoError(err)
+	s.Suite.NotNil(all)
+	fmt.Println(all, "wegwegewgweg")
 
 }
 

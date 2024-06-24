@@ -22,7 +22,7 @@ go-gen:
 migrate:
 	migrate -source file://migrations -database postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DATABASE}?sslmode=disable up
 
-DB_URL := "postgres://postgres:123@localhost:5432/generator_resume?sslmode=disable"
+DB_URL := "postgres://postgres:+_+diyor2005+_+@localhost:5432/generator_resume?sslmode=disable"
 
 migrate-up:
 	migrate -path migrations -database $(DB_URL) -verbose up

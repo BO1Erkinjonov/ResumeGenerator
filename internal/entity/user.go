@@ -19,6 +19,12 @@ type FieldValueReq struct {
 	Field string `json:"field"`
 	Value string `json:"value"`
 }
+type GetAllUserReq struct {
+	Field  string `schema:"field"`
+	Values string `schema:"values"`
+	Limit  uint64 `schema:"limit"`
+	Offset uint64 `schema:"offset"`
+}
 
 type Result struct {
 	IsExists bool `json:"resp"`
