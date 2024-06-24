@@ -38,9 +38,6 @@ func NewUserUseCase(u User) *userUseCase {
 	return &userUseCase{u}
 }
 
-func (u userUseCase) GetAllUsers(ctx context.Context, req *entity.GetAllUserReq) ([]*entity.User, error) {
-	return u.repo.GetAllUsers(ctx, req)
-}
 func (u userUseCase) DeleteUserById(ctx context.Context, req *entity.DeleteUserReq) (*entity.Result, error) {
 	return u.repo.DeleteUserById(ctx, req)
 }

@@ -165,9 +165,12 @@ func (u *UserRepo) GetAllUsers(ctx context.Context, req *entity.GetAllUserReq) (
 		return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " all"))
 	}
 	defer rows.Close()
-	users := make([]*entity.User, 2)
+
+	users := []*entity.User{}
+
 	for rows.Next() {
 		var user entity.User
+		var updatedAt, deletedAt sql.NullTime
 		err = rows.Scan(
 			&user.ID,
 			&user.FirstName,
@@ -177,7 +180,6 @@ func (u *UserRepo) GetAllUsers(ctx context.Context, req *entity.GetAllUserReq) (
 			&user.Username,
 			&user.ImageUrl,
 			&user.CreatedAt,
-<<<<<<< HEAD
 			&updatedAt,
 			&deletedAt,
 		)
@@ -196,15 +198,7 @@ func (u *UserRepo) GetAllUsers(ctx context.Context, req *entity.GetAllUserReq) (
 		}
 
 	}
-=======
-			&user.UpdatedAt)
-		if err != nil {
-			return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " all"))
-		}
-		users = append(users, &user)
->>>>>>> origin/main
 
-	}
 	if err := rows.Err(); err != nil {
 		return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " all"))
 	}
