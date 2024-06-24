@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"resume-generator/internal/entity"
 	"resume-generator/internal/pkg/postgres"
+	"time"
 )
 
 type UserRepo struct {
@@ -33,6 +34,42 @@ func (u *UserRepo) userSelectQueryPrefix() string {
 			deleted_at`
 }
 
+func (u *UserRepo) userSelectAllQuery(req *entity.GetAllUserReq) string {
+	query := fmt.Sprintf("SELECT %s FROM %s", u.userSelectQueryPrefix(), u.tableName)
+	if req.Field != "" {
+		query += fmt.Sprintf(" WHERE %s", req.Field)
+	}
+	if req.Values != "" {
+		query += fmt.Sprintf(" = '%s'", req.Values)
+	}
+	if req.Offset != 0 {
+		query += fmt.Sprintf(" OFFSET %d", req.Offset)
+	}
+	if req.Limit != 0 {
+		query += fmt.Sprintf(" LIMIT %d", req.Limit)
+	}
+	return query
+}
+
+func (u *UserRepo) userUpdateQuery(req *entity.UpdateUserReq) map[string]interface{} {
+
+	date := make(map[string]interface{})
+	if req.Password != "" {
+		date["password"] = req.Password
+	}
+	if req.FirstName != "" {
+		date["first_name"] = req.FirstName
+	}
+	if req.LastName != "" {
+		date["last_name"] = req.LastName
+	}
+	if req.UserName != "" {
+		date["user_name"] = req.UserName
+	}
+	date["updated_at"] = time.Now()
+
+	return date
+}
 func (u *UserRepo) CreateUser(ctx context.Context, req *entity.User) (*entity.User, error) {
 	data := map[string]interface{}{
 		"id":         req.ID,
@@ -94,8 +131,10 @@ func (u *UserRepo) GetUserById(ctx context.Context, req *entity.FieldValueReq) (
 	if deletedAt.Valid {
 		user.DeletedAt = deletedAt.Time
 	}
-	if err != nil {
-		return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " get"))
+	if user.DeletedAt.IsZero() {
+		if err != nil {
+			return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " get"))
+		}
 	}
 	return &user, nil
 }
@@ -118,12 +157,10 @@ func (u *UserRepo) CheckUniques(ctx context.Context, req *entity.FieldValueReq) 
 }
 
 func (u *UserRepo) GetAllUsers(ctx context.Context, req *entity.GetAllUserReq) ([]*entity.User, error) {
-	query, args, err := u.db.Sq.Builder.Select(u.userSelectQueryPrefix()).From(u.tableName).
-		Where(u.db.Sq.Equal(req.Field, req.Values)).Limit(req.Limit).Offset(req.Offset).ToSql()
-	if err != nil {
-		return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " all"))
-	}
-	rows, err := u.db.Query(ctx, query, args...)
+
+	query := u.userSelectAllQuery(req)
+
+	rows, err := u.db.Query(ctx, query)
 	if err != nil {
 		return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " all"))
 	}
@@ -146,17 +183,20 @@ func (u *UserRepo) GetAllUsers(ctx context.Context, req *entity.GetAllUserReq) (
 			&updatedAt,
 			&deletedAt,
 		)
+		if err != nil {
+			return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " all"))
+		}
 		if updatedAt.Valid {
 			user.UpdatedAt = updatedAt.Time
 		}
 		if deletedAt.Valid {
 			user.DeletedAt = deletedAt.Time
 		}
-		if err != nil {
 
-			return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " all"))
+		if user.DeletedAt.IsZero() {
+			users = append(users, &user)
 		}
-		users = append(users, &user)
+
 	}
 
 	if err := rows.Err(); err != nil {
@@ -164,4 +204,33 @@ func (u *UserRepo) GetAllUsers(ctx context.Context, req *entity.GetAllUserReq) (
 	}
 
 	return users, nil
+}
+
+func (u *UserRepo) DeleteUserById(ctx context.Context, req *entity.DeleteUserReq) (*entity.Result, error) {
+	now := time.Now()
+	query, argc, err := u.db.Sq.Builder.Update(u.tableName).Set("deleted_at", now).
+		Where(u.db.Sq.Equal("id", req.ID)).ToSql()
+	if err != nil {
+		return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " update"))
+	}
+	_, err = u.db.Exec(ctx, query, argc...)
+	if err != nil {
+		return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " update"))
+	}
+	return &entity.Result{IsExists: true}, nil
+}
+
+func (u *UserRepo) UpdateUserById(ctx context.Context, req *entity.UpdateUserReq) (*entity.Result, error) {
+	data := u.userUpdateQuery(req)
+	query, argc, err := u.db.Sq.Builder.Update(u.tableName).SetMap(data).
+		Where(u.db.Sq.Equal("id", req.UserId)).ToSql()
+	fmt.Println(query, argc)
+	if err != nil {
+		return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " update"))
+	}
+	_, err = u.db.Exec(ctx, query, argc...)
+	if err != nil {
+		return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " update"))
+	}
+	return &entity.Result{IsExists: true}, nil
 }

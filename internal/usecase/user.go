@@ -10,6 +10,8 @@ type User interface {
 	GetUserById(ctx context.Context, req *entity.FieldValueReq) (*entity.User, error)
 	CheckUniques(ctx context.Context, user *entity.FieldValueReq) (*entity.Result, error)
 	GetAllUsers(ctx context.Context, req *entity.GetAllUserReq) ([]*entity.User, error)
+	DeleteUserById(ctx context.Context, req *entity.DeleteUserReq) (*entity.Result, error)
+	UpdateUserById(ctx context.Context, req *entity.UpdateUserReq) (*entity.Result, error)
 }
 
 type userUseCase struct {
@@ -30,4 +32,15 @@ func (u userUseCase) CheckUniques(ctx context.Context, user *entity.FieldValueRe
 
 func NewUserUseCase(u User) *userUseCase {
 	return &userUseCase{u}
+}
+
+func (u userUseCase) GetAllUsers(ctx context.Context, req *entity.GetAllUserReq) ([]*entity.User, error) {
+	return u.repo.GetAllUsers(ctx, req)
+}
+func (u userUseCase) DeleteUserById(ctx context.Context, req *entity.DeleteUserReq) (*entity.Result, error) {
+	return u.repo.DeleteUserById(ctx, req)
+}
+
+func (u userUseCase) UpdateUserById(ctx context.Context, req *entity.UpdateUserReq) (*entity.Result, error) {
+	return u.repo.UpdateUserById(ctx, req)
 }

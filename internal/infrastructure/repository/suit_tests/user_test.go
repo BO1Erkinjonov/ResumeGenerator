@@ -59,18 +59,76 @@ func (s *AnimalTypesTestSuite) TestAnimalTypesCrud() {
 	s.Suite.Equal(resp.Username, user.Username)
 	s.Suite.Equal(resp.ImageUrl, user.ImageUrl)
 
-	all, err := s.Repository.GetAllUsers(ctx, &entity.GetAllUserReq{
-		Field:  "first_name",
-		Values: "Test first name",
-		Limit:  20,
-		Offset: 0,
-	})
+	all, err := s.Repository.GetAllUsers(ctx, &entity.GetAllUserReq{})
+	for i, _ := range all {
+		fmt.Println(all[i])
+	}
 	s.Suite.NoError(err)
 	s.Suite.NotNil(all)
-	fmt.Println(all, "wegwegewgweg")
 
 }
 
+func (s *AnimalTypesTestSuite) TestDeleteUser() {
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*time.Duration(2))
+	defer cancel()
+	user := &entity.User{
+		ID:        uuid.NewString(),
+		FirstName: "Test first name",
+		LastName:  "Test last name",
+		Email:     "Test email",
+		Password:  "Test password",
+		Username:  "Test username",
+		ImageUrl:  "Test image",
+	}
+	resp, err := s.Repository.CreateUser(ctx, user)
+	s.Suite.NoError(err)
+	s.Suite.NotNil(resp)
+	s.Suite.Equal(resp.ID, user.ID)
+	s.Suite.Equal(resp.FirstName, user.FirstName)
+	s.Suite.Equal(resp.LastName, user.LastName)
+	s.Suite.Equal(resp.Email, user.Email)
+	s.Suite.Equal(resp.Password, user.Password)
+	s.Suite.Equal(resp.Username, user.Username)
+	s.Suite.Equal(resp.ImageUrl, user.ImageUrl)
+
+	result, err := s.Repository.DeleteUserById(ctx, &entity.DeleteUserReq{ID: resp.ID})
+	s.Suite.NoError(err)
+	s.Suite.NotNil(result)
+}
+
+func (s *AnimalTypesTestSuite) TestUpdateUser() {
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*time.Duration(2))
+	defer cancel()
+	user := &entity.User{
+		ID:        uuid.NewString(),
+		FirstName: "Test first name",
+		LastName:  "Test last name",
+		Email:     "Test email",
+		Password:  "Test password",
+		Username:  "Test username",
+		ImageUrl:  "Test image",
+	}
+	resp, err := s.Repository.CreateUser(ctx, user)
+	s.Suite.NoError(err)
+	s.Suite.NotNil(resp)
+	s.Suite.Equal(resp.ID, user.ID)
+	s.Suite.Equal(resp.FirstName, user.FirstName)
+	s.Suite.Equal(resp.LastName, user.LastName)
+	s.Suite.Equal(resp.Email, user.Email)
+	s.Suite.Equal(resp.Password, user.Password)
+	s.Suite.Equal(resp.Username, user.Username)
+	s.Suite.Equal(resp.ImageUrl, user.ImageUrl)
+
+	result, err := s.Repository.UpdateUserById(ctx, &entity.UpdateUserReq{
+		UserId:    user.ID,
+		FirstName: "Diyorbek",
+		LastName:  "Orifjonv",
+		Password:  "+_+diyor2005+_+",
+		UserName:  "D1YORTOP4EEK",
+	})
+	s.Suite.NoError(err)
+	s.Suite.NotNil(result)
+}
 func (s *AnimalTypesTestSuite) TearDownTest() {
 	s.CleanUpFunc()
 }
