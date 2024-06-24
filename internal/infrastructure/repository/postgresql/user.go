@@ -128,7 +128,7 @@ func (u *UserRepo) GetAllUsers(ctx context.Context, req *entity.GetAllUserReq) (
 		return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " all"))
 	}
 	defer rows.Close()
-	users := make([]*entity.User, 0)
+	users := make([]*entity.User, 2)
 	for rows.Next() {
 		var user entity.User
 		err = rows.Scan(
