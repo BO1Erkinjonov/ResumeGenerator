@@ -29,7 +29,7 @@ definitions:
       user_name:
         type: string
     type: object
-host: localhost:9050
+host: 18.158.24.26:9050
 info:
   contact: {}
   title: Generate resume

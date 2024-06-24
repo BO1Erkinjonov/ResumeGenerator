@@ -2,7 +2,6 @@ package suit_tests
 
 import (
 	"context"
-	"fmt"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/suite"
 	"log"
@@ -59,10 +58,34 @@ func (s *AnimalTypesTestSuite) TestAnimalTypesCrud() {
 	s.Suite.Equal(resp.Username, user.Username)
 	s.Suite.Equal(resp.ImageUrl, user.ImageUrl)
 
+<<<<<<< HEAD
 	all, err := s.Repository.GetAllUsers(ctx, &entity.GetAllUserReq{})
 	for i, _ := range all {
 		fmt.Println(all[i])
 	}
+=======
+	respGet, err := s.Repository.GetUserById(ctx, &entity.FieldValueReq{
+		Field: "id",
+		Value: user.ID,
+	})
+
+	s.Suite.NoError(err)
+	s.Suite.NotNil(respGet)
+	s.Suite.Equal(respGet.ID, user.ID)
+	s.Suite.Equal(respGet.FirstName, user.FirstName)
+	s.Suite.Equal(respGet.LastName, user.LastName)
+	s.Suite.Equal(respGet.Email, user.Email)
+	s.Suite.Equal(respGet.Password, user.Password)
+	s.Suite.Equal(respGet.Username, user.Username)
+	s.Suite.Equal(respGet.ImageUrl, user.ImageUrl)
+
+	all, err := s.Repository.GetAllUsers(ctx, &entity.GetAllUserReq{
+		Field:  "first_name",
+		Values: "Test first name",
+		Limit:  20,
+		Offset: 0,
+	})
+>>>>>>> origin/main
 	s.Suite.NoError(err)
 	s.Suite.NotNil(all)
 

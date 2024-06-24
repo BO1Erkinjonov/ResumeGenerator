@@ -18,6 +18,10 @@ type userUseCase struct {
 	repo User
 }
 
+func (u userUseCase) GetAllUsers(ctx context.Context, req *entity.GetAllUserReq) ([]*entity.User, error) {
+	return u.repo.GetAllUsers(ctx, req)
+}
+
 func (u userUseCase) CreateUser(ctx context.Context, user *entity.User) (*entity.User, error) {
 	return u.repo.CreateUser(ctx, user)
 }

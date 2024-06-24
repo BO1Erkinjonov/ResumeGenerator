@@ -12,7 +12,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"github.com/redis/go-redis/v9"
-	"log"
 	"math/rand"
 	"net/http"
 	"net/smtp"
@@ -80,24 +79,40 @@ func (h *HandlerV1) Register(c *gin.Context) {
 	})
 	byteDate, err := json.Marshal(&body)
 	if err != nil {
-		log.Fatalln(err)
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": err.Error(),
+		})
+		h.log.Error("failed to marshaling error")
+		return
 	}
 
-	err = rdb.Set(context.Background(), "email_"+body.Email, byteDate, 0).Err()
+	err = rdb.SetEx(context.Background(), "email_"+body.Email, byteDate, time.Minute*1).Err()
 	if err != nil {
-		log.Fatalln(err)
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err.Error(),
+		})
+		h.log.Error("failed to redis error")
+		return
 	}
 	code := rand.Int() % 1000000
 	err = rdb.SetEx(context.Background(), body.Email, code, time.Minute*1).Err()
 	if err != nil {
-		log.Fatalln(err)
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err.Error(),
+		})
+		h.log.Error("failed to redis error")
+		return
 	}
 	codeResp := strconv.Itoa(code)
 
 	auth := smtp.PlainAuth("", "boburerkinzonov@gmail.com", "llqmgbilccvhltfd", "smtp.gmail.com")
 	err = smtp.SendMail("smtp.gmail.com:587", auth, "boburerkinzonov@gmail.com", []string{body.Email}, []byte(codeResp))
 	if err != nil {
-		log.Fatalln(err)
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err.Error(),
+		})
+		h.log.Error("failed to email errored", l.Error(err))
+		return
 	}
 	c.JSON(http.StatusOK, true)
 }
@@ -124,16 +139,28 @@ func (h *HandlerV1) Verification(c *gin.Context) {
 
 	respCode, err := rdb.Get(context.Background(), emailRegis).Result()
 	if err != nil {
-		log.Fatalln(err)
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err.Error(),
+		})
+		h.log.Error("failed to redis error")
+		return
 	}
 	var code int
 	if err := json.Unmarshal([]byte(respCode), &code); err != nil {
-		log.Fatalln(err)
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err.Error(),
+		})
+		h.log.Error("failed to unmarshal error")
+		return
 	}
 
 	code1, err := strconv.Atoi(codeRegis)
 	if err != nil {
-		log.Fatalln(err)
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": err.Error(),
+		})
+		h.log.Error("failed to otp error")
+		return
 	}
 
 	if code != code1 {
@@ -144,19 +171,35 @@ func (h *HandlerV1) Verification(c *gin.Context) {
 		defer cancel()
 		err = rdb.Del(context.Background(), emailRegis).Err()
 		if err != nil {
-			log.Fatalln(err)
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"error": err.Error(),
+			})
+			h.log.Error("failed to redis error")
+			return
 		}
 		var regis models.UserBody
 		respUser, err := rdb.Get(context.Background(), "email_"+emailRegis).Result()
 		if err != nil {
-			log.Fatalln(err)
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"error": err.Error(),
+			})
+			h.log.Error("failed to redis error")
+			return
 		}
 		err = rdb.Del(context.Background(), "email_"+emailRegis).Err()
 		if err != nil {
-			log.Fatalln(err)
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"error": err.Error(),
+			})
+			h.log.Error("failed to redis error")
+			return
 		}
 		if err := json.Unmarshal([]byte(respUser), &regis); err != nil {
-			log.Fatalln(err)
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"error": err.Error(),
+			})
+			h.log.Error("failed to unmarshal error")
+			return
 		}
 
 		h.jwthandler = token.JWTHandler{
@@ -168,7 +211,11 @@ func (h *HandlerV1) Verification(c *gin.Context) {
 
 		access, _, err := h.jwthandler.GenerateAuthJWT()
 		if err != nil {
-			log.Fatalln(err)
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"error": err.Error(),
+			})
+			h.log.Error("failed to token error")
+			return
 		}
 		_, err = h.user.CreateUser(ctx, &entity.User{
 			ID:        regis.ID,
@@ -180,7 +227,11 @@ func (h *HandlerV1) Verification(c *gin.Context) {
 			ImageUrl:  regis.ImageUrl,
 		})
 		if err != nil {
-			log.Fatalln(err)
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"error": err.Error(),
+			})
+			h.log.Error("failed to created error")
+			return
 		}
 
 		c.JSON(http.StatusOK, access)
@@ -235,7 +286,11 @@ func (h *HandlerV1) LogIn(c *gin.Context) {
 	}
 	access, _, err := h.jwthandler.GenerateAuthJWT()
 	if err != nil {
-		log.Fatalln(err)
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err.Error(),
+		})
+		h.log.Error("failed to token error")
+		return
 	}
 
 	c.JSON(http.StatusOK, access)

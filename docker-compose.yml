@@ -47,7 +47,7 @@ services:
       - ./migrations:/migrations
     command: -path /migrations -database postgres://postgres:123@db:5432/generator_resume?sslmode=disable -verbose up
     links:
-      - db
+      - "db"
     depends_on:
       - "db"
 
