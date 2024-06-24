@@ -13,13 +13,13 @@ import (
 	"time"
 )
 
-type AnimalTypesTestSuite struct {
+type UserTestSuite struct {
 	suite.Suite
 	CleanUpFunc func()
 	Repository  *repo.UserRepo
 }
 
-func (s *AnimalTypesTestSuite) SetupTest() {
+func (s *UserTestSuite) SetupTest() {
 	cfg, err := config.NewConfig()
 	if err != nil {
 		log.Println(err)
@@ -34,7 +34,7 @@ func (s *AnimalTypesTestSuite) SetupTest() {
 	s.CleanUpFunc = pgPool.Close
 }
 
-func (s *AnimalTypesTestSuite) TestAnimalTypesCrud() {
+func (s *UserTestSuite) TestUserCrud() {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*time.Duration(2))
 	defer cancel()
 
@@ -58,12 +58,26 @@ func (s *AnimalTypesTestSuite) TestAnimalTypesCrud() {
 	s.Suite.Equal(resp.Username, user.Username)
 	s.Suite.Equal(resp.ImageUrl, user.ImageUrl)
 
+	respGet, err := s.Repository.GetUserById(ctx, &entity.FieldValueReq{
+		Field: "id",
+		Value: user.ID,
+	})
+
+	s.Suite.NoError(err)
+	s.Suite.NotNil(respGet)
+	s.Suite.Equal(respGet.FirstName, user.FirstName)
+	s.Suite.Equal(respGet.LastName, user.LastName)
+	s.Suite.Equal(respGet.Email, user.Email)
+	s.Suite.Equal(respGet.Password, user.Password)
+	s.Suite.Equal(respGet.Username, user.Username)
+	s.Suite.Equal(respGet.ImageUrl, user.ImageUrl)
+
 }
 
-func (s *AnimalTypesTestSuite) TearDownTest() {
+func (s *UserTestSuite) TearDownTest() {
 	s.CleanUpFunc()
 }
 
-func TestAnimalTypesTestSuite(t *testing.T) {
-	suite.Run(t, new(AnimalTypesTestSuite))
+func TestUserTestSuite(t *testing.T) {
+	suite.Run(t, new(UserTestSuite))
 }
