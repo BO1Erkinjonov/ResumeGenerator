@@ -8,6 +8,10 @@ CURRENT_DIR=$(shell pwd)
 run:
 	go run cmd/app/main.go
 
+swagger-gen:
+	~/go/bin/swag init -g ./api/router.go -o api/docs
+
+
 # go generate
 .PHONY: go-gen
 go-gen:

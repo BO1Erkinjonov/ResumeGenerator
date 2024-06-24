@@ -3,6 +3,7 @@ package config
 import (
 	"github.com/spf13/cast"
 	"os"
+	"time"
 )
 
 type Config struct {
@@ -31,10 +32,21 @@ type Config struct {
 		SslMode  string
 	}
 
+	Token struct {
+		Secret    string
+		AccessTTL time.Duration
+	}
+
 	OTLPCollector struct {
 		Host string
 		Port string
 	}
+}
+
+func Token() string {
+	c := Config{}
+	c.Token.Secret = getEnv("TOKEN_SECRET", "token_secret")
+	return c.Token.Secret
 }
 
 func NewConfig() (*Config, error) {
@@ -61,6 +73,9 @@ func NewConfig() (*Config, error) {
 	config.DB.Password = getEnv("POSTGRES_PASSWORD", "123")
 	config.DB.SslMode = getEnv("POSTGRES_SSLMODE", "disable")
 	config.DB.Name = getEnv("POSTGRES_DATABASE", "generator_resume")
+
+	// token configuration
+	config.Token.Secret = getEnv("TOKEN_SECRET", "token_secret")
 
 	return &config, nil
 }

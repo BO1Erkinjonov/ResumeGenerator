@@ -3,3 +3,111 @@
 2024-06-23T21:31:42.195+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
 main.main.func1
 	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-24T09:46:03.465+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T09:46:39.754+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-24T09:46:39.754+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-24T09:49:21.695+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T09:57:23.075+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-24T09:57:23.076+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-24T09:57:25.224+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T09:57:43.128+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T09:58:14.084+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T09:58:20.363+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-24T09:58:20.364+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-24T09:59:13.494+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T09:59:29.444+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T10:00:58.420+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T10:04:40.304+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T10:11:44.709+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T10:11:56.720+0500	ERROR	v1/auth.go:73	failed to check email uniques
+resume-generator/api/handlers/v1.(*HandlerV1).Register
+	/home/bobur/GolandProjects/ResumeGenerator/api/handlers/v1/auth.go:73
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/go/pkg/mod/github.com/gin-gonic/gin@v1.10.0/context.go:185
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/home/bobur/go/pkg/mod/github.com/gin-gonic/gin@v1.10.0/recovery.go:102
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/go/pkg/mod/github.com/gin-gonic/gin@v1.10.0/context.go:185
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/home/bobur/go/pkg/mod/github.com/gin-gonic/gin@v1.10.0/logger.go:249
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/go/pkg/mod/github.com/gin-gonic/gin@v1.10.0/context.go:185
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/home/bobur/go/pkg/mod/github.com/gin-gonic/gin@v1.10.0/gin.go:633
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/home/bobur/go/pkg/mod/github.com/gin-gonic/gin@v1.10.0/gin.go:589
+net/http.serverHandler.ServeHTTP
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:2039
+2024-06-24T10:12:44.803+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-24T10:12:44.804+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-24T10:19:13.832+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T10:19:21.861+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-24T10:19:21.862+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-24T10:29:44.307+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T10:31:41.786+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-24T10:31:41.786+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-24T10:31:43.660+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T10:32:02.229+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-24T10:32:02.229+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-24T10:32:04.223+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T10:32:17.327+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-24T10:32:17.328+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-24T10:33:03.365+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T10:34:10.429+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-24T10:34:10.429+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-24T10:34:13.852+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T10:34:37.271+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-24T10:34:37.271+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-24T10:34:38.163+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T10:35:05.001+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-24T10:35:05.002+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-24T10:35:06.916+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T10:35:15.782+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-24T10:35:15.783+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-24T10:36:51.417+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T10:37:26.355+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-24T10:37:26.355+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-24T10:37:28.373+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T10:38:59.823+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-24T10:38:59.823+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-24T10:39:10.173+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T10:40:40.904+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-24T10:40:40.905+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-24T10:40:49.459+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T10:42:16.166+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-24T10:42:16.166+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-24T10:42:17.187+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}

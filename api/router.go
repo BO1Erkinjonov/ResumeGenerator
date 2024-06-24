@@ -1,7 +1,7 @@
 package api
 
 import (
-	"fmt"
+	"resume-generator/api/middleware/casbin"
 	//_ "resume-generator/api/docs"
 	"resume-generator/internal/usecase"
 	"time"
@@ -54,15 +54,14 @@ func NewRoute(option RouteOption) *gin.Engine {
 	corsConfig.AllowMethods = []string{"*"}
 	router.Use(cors.New(corsConfig))
 
+	router.Use(casbin.NewAuthorizer())
+
 	api := router.Group("/v1")
 
-	fmt.Println(HandlerV1)
-	//animalType := api.Group("/animal-type")
-	//animalType.POST("", HandlerV1.CreateAnimalTypes)
-	//animalType.GET("/get", HandlerV1.GetAnimalTypes)
-	//animalType.GET("", HandlerV1.ListAnimalTypes)
-	//animalType.PUT("", HandlerV1.UpdateAnimalTypes)
-	//animalType.DELETE("", HandlerV1.DeleteAnimalTypes)
+	auth := api.Group("/auth")
+	auth.POST("/register/", HandlerV1.Register)
+	auth.POST("/verification/", HandlerV1.Verification)
+	auth.POST("/login/", HandlerV1.LogIn)
 
 	url := ginSwagger.URL("swagger/doc.json")
 	api.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))

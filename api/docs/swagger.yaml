@@ -1,0 +1,141 @@
+definitions:
+  models.AccessToken:
+    properties:
+      access:
+        type: string
+    type: object
+  models.Error:
+    properties:
+      message:
+        type: string
+    type: object
+  models.StandardErrorModel:
+    properties:
+      error:
+        $ref: '#/definitions/models.Error'
+    type: object
+  models.User:
+    properties:
+      email:
+        type: string
+      first_name:
+        type: string
+      image_url:
+        type: string
+      last_name:
+        type: string
+      password:
+        type: string
+      user_name:
+        type: string
+    type: object
+host: localhost:9050
+info:
+  contact: {}
+  title: Generate resume
+  version: "1.7"
+paths:
+  /v1/auth/login/:
+    post:
+      consumes:
+      - application/json
+      description: LogIn - Api for registering users
+      parameters:
+      - description: Password
+        in: query
+        name: password
+        required: true
+        type: string
+      - description: Email
+        in: query
+        name: email
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.AccessToken'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+      summary: LogIn
+      tags:
+      - Register
+  /v1/auth/register/:
+    post:
+      consumes:
+      - application/json
+      description: Register - Api for registering users
+      parameters:
+      - description: createRegisterModel
+        in: body
+        name: Register
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: boolean
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+      summary: Register
+      tags:
+      - Register
+  /v1/auth/verification/:
+    post:
+      consumes:
+      - application/json
+      description: Verification - Api for registering users
+      parameters:
+      - description: Code
+        in: query
+        name: code
+        required: true
+        type: integer
+      - description: Email
+        in: query
+        name: email
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.AccessToken'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+      summary: Verification
+      tags:
+      - Register
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

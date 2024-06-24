@@ -6,7 +6,7 @@ import (
 	"go.uber.org/zap"
 	"net/http"
 	"resume-generator/api"
-	//repo "resume-generator/internal/infrastructure/repository/postgresql"
+	repo "resume-generator/internal/infrastructure/repository/postgresql"
 	"resume-generator/internal/pkg/config"
 	"resume-generator/internal/pkg/logger"
 	"resume-generator/internal/pkg/postgres"
@@ -50,18 +50,18 @@ func (a *App) Run() error {
 
 	// repositories initialization
 
-	//animalType := repo.NewAnimalTypesRepo(a.DB)
+	user := repo.NewUserRepo(a.DB)
 
 	// use case initialization
 
-	//animalTypeUseCase := usecase.NewAnimalTypeUseCase(animalType)
+	userUseCase := usecase.NewUserUseCase(user)
 
 	// api init
 	handler := api.NewRoute(api.RouteOption{
 		ContextTimeout: contextTimeout,
 		Logger:         a.Logger,
 		Config:         a.Config,
-		//AnimalType:        animalTypeUseCase,
+		User:           userUseCase,
 	})
 
 	// server init
