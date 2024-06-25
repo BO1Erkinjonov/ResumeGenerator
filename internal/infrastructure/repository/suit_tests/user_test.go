@@ -83,15 +83,27 @@ func (s *UserTestSuite) TestUserCrud() {
 	s.Suite.NoError(err)
 	s.Suite.NotNil(all)
 
+	newFirstName := "Deyorbek"
+	newLastName := "Orifjonv"
+	newPassword := "+_+diyor2005+_+"
+	newUserName := "D1YORTOP4EEK"
+
 	result, err := s.Repository.UpdateUserById(ctx, &entity.UpdateUserReq{
 		UserId:    user.ID,
-		FirstName: "Diyorbek",
-		LastName:  "Orifjonv",
-		Password:  "+_+diyor2005+_+",
-		UserName:  "D1YORTOP4EEK",
+		FirstName: newFirstName,
+		LastName:  newLastName,
+		Password:  newPassword,
+		UserName:  newUserName,
 	})
 	s.Suite.NoError(err)
 	s.Suite.NotNil(result)
+	s.Suite.Equal(result.ID, user.ID)
+	s.Suite.Equal(result.FirstName, newFirstName)
+	s.Suite.Equal(result.LastName, newLastName)
+	s.Suite.Equal(result.Email, user.Email)
+	s.Suite.Equal(result.Password, newPassword)
+	s.Suite.Equal(result.Username, newUserName)
+	s.Suite.Equal(result.ImageUrl, user.ImageUrl)
 
 	resultDel, err := s.Repository.DeleteUserById(ctx, &entity.DeleteReq{ID: resp.ID})
 	s.Suite.NoError(err)

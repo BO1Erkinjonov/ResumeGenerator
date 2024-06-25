@@ -223,7 +223,6 @@ func (u *UserRepo) UpdateUserById(ctx context.Context, req *entity.UpdateUserReq
 	if err != nil {
 		return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " update"))
 	}
-	fmt.Println(query, argc)
 	var user entity.User
 	var updatedAt, deletedAt sql.NullTime
 	err = u.db.QueryRow(ctx, query, argc...).Scan(
