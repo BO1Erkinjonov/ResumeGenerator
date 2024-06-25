@@ -29,7 +29,7 @@ func (h *HandlerV1) GetAllUsers(c *gin.Context) {
 	limit := c.DefaultQuery("limit", "10")
 
 	offset := cast.ToUint64(limit) * (cast.ToUint64(page) - 1)
-	resp, err := h.user.GetAllUsers(ctx, &entity.GetAllUserReq{
+	resp, err := h.user.GetAllUsers(ctx, &entity.GetAllReq{
 		Field:  "",
 		Values: "",
 		Limit:  0,
