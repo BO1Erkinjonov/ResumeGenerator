@@ -70,7 +70,7 @@ func NewConfig() (*Config, error) {
 	config.DB.Host = getEnv("POSTGRES_HOST", "localhost")
 	config.DB.Port = getEnv("POSTGRES_PORT", "5432")
 	config.DB.User = getEnv("POSTGRES_USER", "postgres")
-	config.DB.Password = getEnv("POSTGRES_PASSWORD", "123")
+	config.DB.Password = getEnv("POSTGRES_PASSWORD", "+_+diyor2005+_+")
 	config.DB.SslMode = getEnv("POSTGRES_SSLMODE", "disable")
 	config.DB.Name = getEnv("POSTGRES_DATABASE", "generator_resume")
 

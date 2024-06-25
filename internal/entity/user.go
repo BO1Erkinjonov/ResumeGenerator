@@ -31,7 +31,8 @@ type Result struct {
 }
 
 type DeleteReq struct {
-	ID string `json:"id"`
+	ID            string `json:"id"`
+	IsHardDeleted bool   `json:"is_hard_deleted"`
 }
 
 type UpdateUserReq struct {

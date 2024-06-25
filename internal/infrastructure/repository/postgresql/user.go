@@ -50,7 +50,6 @@ func (u *UserRepo) userUpdateQuery(req *entity.UpdateUserReq) map[string]interfa
 		date["user_name"] = req.UserName
 	}
 	date["updated_at"] = time.Now()
-
 	return date
 }
 func (u *UserRepo) CreateUser(ctx context.Context, req *entity.User) (*entity.User, error) {
@@ -204,8 +203,19 @@ func (u *UserRepo) GetAllUsers(ctx context.Context, req *entity.GetAllReq) ([]*e
 
 func (u *UserRepo) DeleteUserById(ctx context.Context, req *entity.DeleteReq) (*entity.Result, error) {
 	now := time.Now()
-	query, argc, err := u.db.Sq.Builder.Update(u.tableName).Set("deleted_at", now).
-		Where(u.db.Sq.Equal("id", req.ID)).ToSql()
+	var (
+		query string
+		argc  []interface{}
+		err   error
+	)
+	if req.IsHardDeleted {
+		query, argc, err = u.db.Sq.Builder.Delete(u.tableName).
+			Where(u.db.Sq.Equal("id", req.ID)).ToSql()
+	} else {
+		query, argc, err = u.db.Sq.Builder.Update(u.tableName).Set("deleted_at", now).
+			Where(u.db.Sq.Equal("id", req.ID)).ToSql()
+	}
+
 	if err != nil {
 		return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " update"))
 	}
