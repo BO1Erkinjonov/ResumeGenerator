@@ -42,6 +42,6 @@ func (u userUseCase) DeleteUserById(ctx context.Context, req *entity.DeleteReq) 
 	return u.repo.DeleteUserById(ctx, req)
 }
 
-func (u userUseCase) UpdateUserById(ctx context.Context, req *entity.UpdateUserReq) (*entity.Result, error) {
+func (u userUseCase) UpdateUserById(ctx context.Context, req *entity.UpdateUserReq) (*entity.User, error) {
 	return u.repo.UpdateUserById(ctx, req)
 }
