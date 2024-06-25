@@ -27,8 +27,8 @@ type RouteOption struct {
 // NewRoute
 // @title Generate resume
 // @version 1.7
-// @host 18.158.24.26:9050
-// // @host localhost:9050
+// // @host 18.158.24.26:9050
+// @host localhost:9050
 // @securityDefinitions.apikey ApiKeyAuth
 // @in header
 // @name Authorization
@@ -59,13 +59,18 @@ func NewRoute(option RouteOption) *gin.Engine {
 
 	api := router.Group("/v1")
 
+	// auth
 	auth := api.Group("/auth")
 	auth.POST("/register/", HandlerV1.Register)
 	auth.POST("/verification/", HandlerV1.Verification)
 	auth.POST("/login/", HandlerV1.LogIn)
 
+	// user
 	user := api.Group("/user")
+	user.GET("/get/", HandlerV1.GetUser)
 	user.GET("/all/", HandlerV1.GetAllUsers)
+	user.PUT("/update/", HandlerV1.UpdateUser)
+	user.DELETE("/delete/", HandlerV1.DeleteUser)
 
 	url := ginSwagger.URL("swagger/doc.json")
 	api.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))

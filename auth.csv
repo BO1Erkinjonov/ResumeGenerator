@@ -10,4 +10,8 @@ p, unauthorized, /v1/auth/register/, POST
 p, unauthorized, /v1/auth/verification/, POST
 p, unauthorized, /v1/auth/login/, POST
 p, unauthorized, /v1/user/all/, GET
+p, unauthorized, /v1/user/get/, GET
+
+p, user, /v1/user/update/, PUT
+p, user, /v1/user/delete/, DELETE
 

@@ -23,6 +23,19 @@ definitions:
       error:
         $ref: '#/definitions/models.Error'
     type: object
+  models.UpdateUserReq:
+    properties:
+      first_name:
+        type: string
+      last_name:
+        type: string
+      password:
+        type: string
+      user_id:
+        type: string
+      user_name:
+        type: string
+    type: object
   models.User:
     properties:
       email:
@@ -55,7 +68,7 @@ definitions:
       user_name:
         type: string
     type: object
-host: 18.158.24.26:9050
+host: localhost:9050
 info:
   contact: {}
   title: Generate resume
@@ -165,6 +178,14 @@ paths:
       - application/json
       description: GetAllUsers - Api for get users
       parameters:
+      - description: field
+        in: query
+        name: field
+        type: integer
+      - description: value
+        in: query
+        name: value
+        type: integer
       - description: page
         in: query
         name: page
@@ -189,6 +210,99 @@ paths:
           schema:
             $ref: '#/definitions/models.StandardErrorModel'
       summary: GetAllUsers
+      tags:
+      - User
+  /v1/user/delete/:
+    delete:
+      consumes:
+      - application/json
+      description: DeleteUser - Api for get users
+      parameters:
+      - in: query
+        name: id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: boolean
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+      security:
+      - ApiKeyAuth: []
+      summary: DeleteUser
+      tags:
+      - User
+  /v1/user/get/:
+    get:
+      consumes:
+      - application/json
+      description: GetUser - Api for get users
+      parameters:
+      - description: field
+        in: query
+        name: field
+        type: string
+      - description: value
+        in: query
+        name: value
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UserBody'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+      summary: GetUser
+      tags:
+      - User
+  /v1/user/update/:
+    put:
+      consumes:
+      - application/json
+      description: UpdateUser - Api for get users
+      parameters:
+      - description: updateUserModel
+        in: body
+        name: UpdateUser
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateUserReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UserBody'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+      security:
+      - ApiKeyAuth: []
+      summary: UpdateUser
       tags:
       - User
 securityDefinitions:

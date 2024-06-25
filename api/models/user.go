@@ -27,3 +27,15 @@ type ListUsers struct {
 	Users []UserBody
 	Count int
 }
+
+type UpdateUserReq struct {
+	UserId    string `json:"user_id"`
+	UserName  string `json:"user_name"`
+	FirstName string `json:"first_name"`
+	LastName  string `json:"last_name"`
+	Password  string `json:"password"`
+}
+
+type DeleteReq struct {
+	ID string `json:"id"`
+}

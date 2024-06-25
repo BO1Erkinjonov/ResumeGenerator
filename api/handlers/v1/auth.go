@@ -75,7 +75,7 @@ func (h *HandlerV1) Register(c *gin.Context) {
 	body.ID = uuid.New().String()
 
 	rdb := redis.NewClient(&redis.Options{
-		Addr: "redisdb:6379",
+		Addr: "localhost:6379",
 	})
 	byteDate, err := json.Marshal(&body)
 	if err != nil {
@@ -134,7 +134,7 @@ func (h *HandlerV1) Verification(c *gin.Context) {
 	emailRegis := c.Query("email")
 
 	rdb := redis.NewClient(&redis.Options{
-		Addr: "redisdb:6379",
+		Addr: "localhost:6379",
 	})
 
 	respCode, err := rdb.Get(context.Background(), emailRegis).Result()

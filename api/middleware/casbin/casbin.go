@@ -1,7 +1,6 @@
 package casbin
 
 import (
-	"fmt"
 	"github.com/casbin/casbin/v2"
 	"github.com/gin-gonic/gin"
 	"log"
@@ -49,7 +48,6 @@ func NewAuthorizer() gin.HandlerFunc {
 			log.Fatal(err)
 			return
 		}
-		fmt.Println(sub, obj, etc)
 		if t {
 			ctx.Next()
 			return
