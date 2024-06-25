@@ -19,7 +19,7 @@ type FieldValueReq struct {
 	Field string `json:"field"`
 	Value string `json:"value"`
 }
-type GetAllUserReq struct {
+type GetAllReq struct {
 	Field  string `schema:"field"`
 	Values string `schema:"values"`
 	Limit  uint64 `schema:"limit"`
@@ -30,7 +30,7 @@ type Result struct {
 	IsExists bool `json:"resp"`
 }
 
-type DeleteUserReq struct {
+type DeleteReq struct {
 	ID string `json:"id"`
 }
 

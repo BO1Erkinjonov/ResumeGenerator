@@ -58,12 +58,6 @@ func (s *AnimalTypesTestSuite) TestAnimalTypesCrud() {
 	s.Suite.Equal(resp.Username, user.Username)
 	s.Suite.Equal(resp.ImageUrl, user.ImageUrl)
 
-<<<<<<< HEAD
-	all, err := s.Repository.GetAllUsers(ctx, &entity.GetAllUserReq{})
-	for i, _ := range all {
-		fmt.Println(all[i])
-	}
-=======
 	respGet, err := s.Repository.GetUserById(ctx, &entity.FieldValueReq{
 		Field: "id",
 		Value: user.ID,
@@ -79,13 +73,8 @@ func (s *AnimalTypesTestSuite) TestAnimalTypesCrud() {
 	s.Suite.Equal(respGet.Username, user.Username)
 	s.Suite.Equal(respGet.ImageUrl, user.ImageUrl)
 
-	all, err := s.Repository.GetAllUsers(ctx, &entity.GetAllUserReq{
-		Field:  "first_name",
-		Values: "Test first name",
-		Limit:  20,
-		Offset: 0,
-	})
->>>>>>> origin/main
+	all, err := s.Repository.GetAllUsers(ctx, &entity.GetAllUserReq{})
+
 	s.Suite.NoError(err)
 	s.Suite.NotNil(all)
 

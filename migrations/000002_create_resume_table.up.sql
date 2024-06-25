@@ -8,4 +8,4 @@ CREATE TABLE IF NOT EXISTS resumes (
     salary VARCHAR(200),
     description TEXT,
     work_type VARCHAR(200) CHECK (work_type IN ('offline', 'online', 'does not matter')) NOT NULL
-    );
+);

@@ -34,25 +34,7 @@ func (u *UserRepo) userSelectQueryPrefix() string {
 			deleted_at`
 }
 
-func (u *UserRepo) userSelectAllQuery(req *entity.GetAllUserReq) string {
-	query := fmt.Sprintf("SELECT %s FROM %s", u.userSelectQueryPrefix(), u.tableName)
-	if req.Field != "" {
-		query += fmt.Sprintf(" WHERE %s", req.Field)
-	}
-	if req.Values != "" {
-		query += fmt.Sprintf(" = '%s'", req.Values)
-	}
-	if req.Offset != 0 {
-		query += fmt.Sprintf(" OFFSET %d", req.Offset)
-	}
-	if req.Limit != 0 {
-		query += fmt.Sprintf(" LIMIT %d", req.Limit)
-	}
-	return query
-}
-
 func (u *UserRepo) userUpdateQuery(req *entity.UpdateUserReq) map[string]interface{} {
-
 	date := make(map[string]interface{})
 	if req.Password != "" {
 		date["password"] = req.Password
@@ -156,11 +138,24 @@ func (u *UserRepo) CheckUniques(ctx context.Context, req *entity.FieldValueReq) 
 	return &entity.Result{IsExists: false}, nil
 }
 
-func (u *UserRepo) GetAllUsers(ctx context.Context, req *entity.GetAllUserReq) ([]*entity.User, error) {
+func (u *UserRepo) GetAllUsers(ctx context.Context, req *entity.GetAllReq) ([]*entity.User, error) {
 
-	query := u.userSelectAllQuery(req)
+	tosql := u.db.Sq.Builder.Select(u.userSelectQueryPrefix()).From(u.tableName)
+	if req.Field != "" && req.Values != "" {
+		tosql = tosql.Where(u.db.Sq.Equal(req.Field, req.Values))
+	}
+	if req.Offset != 0 {
+		tosql = tosql.Offset(req.Offset)
+	}
+	if req.Limit != 0 {
+		tosql = tosql.Limit(req.Limit)
+	}
 
-	rows, err := u.db.Query(ctx, query)
+	query, argc, err := tosql.ToSql()
+	if err != nil {
+		return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " all"))
+	}
+	rows, err := u.db.Query(ctx, query, argc...)
 	if err != nil {
 		return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " all"))
 	}
@@ -206,7 +201,7 @@ func (u *UserRepo) GetAllUsers(ctx context.Context, req *entity.GetAllUserReq) (
 	return users, nil
 }
 
-func (u *UserRepo) DeleteUserById(ctx context.Context, req *entity.DeleteUserReq) (*entity.Result, error) {
+func (u *UserRepo) DeleteUserById(ctx context.Context, req *entity.DeleteReq) (*entity.Result, error) {
 	now := time.Now()
 	query, argc, err := u.db.Sq.Builder.Update(u.tableName).Set("deleted_at", now).
 		Where(u.db.Sq.Equal("id", req.ID)).ToSql()
