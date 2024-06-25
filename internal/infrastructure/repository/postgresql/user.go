@@ -3,6 +3,7 @@ package postgresql
 import (
 	"context"
 	"database/sql"
+	"errors"
 	"fmt"
 	"resume-generator/internal/entity"
 	"resume-generator/internal/pkg/postgres"
@@ -215,17 +216,40 @@ func (u *UserRepo) DeleteUserById(ctx context.Context, req *entity.DeleteReq) (*
 	return &entity.Result{IsExists: true}, nil
 }
 
-func (u *UserRepo) UpdateUserById(ctx context.Context, req *entity.UpdateUserReq) (*entity.Result, error) {
+func (u *UserRepo) UpdateUserById(ctx context.Context, req *entity.UpdateUserReq) (*entity.User, error) {
 	data := u.userUpdateQuery(req)
 	query, argc, err := u.db.Sq.Builder.Update(u.tableName).SetMap(data).
-		Where(u.db.Sq.Equal("id", req.UserId)).ToSql()
+		Where(u.db.Sq.Equal("id", req.UserId)).Suffix(fmt.Sprintf("RETURNING %s", u.userSelectQueryPrefix())).ToSql()
+	if err != nil {
+		return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " update"))
+	}
 	fmt.Println(query, argc)
+	var user entity.User
+	var updatedAt, deletedAt sql.NullTime
+	err = u.db.QueryRow(ctx, query, argc...).Scan(
+		&user.ID,
+		&user.FirstName,
+		&user.LastName,
+		&user.Email,
+		&user.Password,
+		&user.Username,
+		&user.ImageUrl,
+		&user.CreatedAt,
+		&deletedAt,
+		&updatedAt)
 	if err != nil {
 		return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " update"))
 	}
-	_, err = u.db.Exec(ctx, query, argc...)
-	if err != nil {
-		return nil, u.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", u.tableName, " update"))
+	if updatedAt.Valid {
+		user.UpdatedAt = updatedAt.Time
 	}
-	return &entity.Result{IsExists: true}, nil
+	if deletedAt.Valid {
+		user.DeletedAt = deletedAt.Time
+	}
+
+	if !user.DeletedAt.IsZero() {
+		return &user, nil
+	}
+
+	return nil, errors.New("user delete failed")
 }

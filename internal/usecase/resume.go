@@ -11,7 +11,7 @@ type Resume interface {
 	CheckUniques(ctx context.Context, req *entity.FieldValueReq) (*entity.Result, error)
 	GetAllResumes(ctx context.Context, req *entity.GetAllReq) ([]*entity.Resume, error)
 	DeleteResume(ctx context.Context, req *entity.DeleteReq) (*entity.Result, error)
-	UpdateResumeById(ctx context.Context, req *entity.UpdateResumeReq) (*entity.Result, error)
+	UpdateResumeById(ctx context.Context, req *entity.UpdateResumeReq) (*entity.Resume, error)
 }
 
 type resumeUserCase struct {
@@ -39,6 +39,6 @@ func (uc *resumeUserCase) DeleteResume(ctx context.Context,
 	return uc.repo.DeleteResume(ctx, req)
 }
 func (uc *resumeUserCase) UpdateResumeById(ctx context.Context,
-	req *entity.UpdateResumeReq) (*entity.Result, error) {
+	req *entity.UpdateResumeReq) (*entity.Resume, error) {
 	return uc.repo.UpdateResumeById(ctx, req)
 }

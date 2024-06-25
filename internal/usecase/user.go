@@ -11,7 +11,7 @@ type User interface {
 	CheckUniques(ctx context.Context, user *entity.FieldValueReq) (*entity.Result, error)
 	GetAllUsers(ctx context.Context, req *entity.GetAllReq) ([]*entity.User, error)
 	DeleteUserById(ctx context.Context, req *entity.DeleteReq) (*entity.Result, error)
-	UpdateUserById(ctx context.Context, req *entity.UpdateUserReq) (*entity.Result, error)
+	UpdateUserById(ctx context.Context, req *entity.UpdateUserReq) (*entity.User, error)
 }
 
 type userUseCase struct {

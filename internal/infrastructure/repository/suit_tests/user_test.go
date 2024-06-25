@@ -73,7 +73,7 @@ func (s *AnimalTypesTestSuite) TestAnimalTypesCrud() {
 	s.Suite.Equal(respGet.Username, user.Username)
 	s.Suite.Equal(respGet.ImageUrl, user.ImageUrl)
 
-	all, err := s.Repository.GetAllUsers(ctx, &entity.GetAllUserReq{})
+	all, err := s.Repository.GetAllUsers(ctx, &entity.GetAllReq{})
 
 	s.Suite.NoError(err)
 	s.Suite.NotNil(all)
@@ -103,7 +103,7 @@ func (s *AnimalTypesTestSuite) TestDeleteUser() {
 	s.Suite.Equal(resp.Username, user.Username)
 	s.Suite.Equal(resp.ImageUrl, user.ImageUrl)
 
-	result, err := s.Repository.DeleteUserById(ctx, &entity.DeleteUserReq{ID: resp.ID})
+	result, err := s.Repository.DeleteUserById(ctx, &entity.DeleteReq{ID: resp.ID})
 	s.Suite.NoError(err)
 	s.Suite.NotNil(result)
 }
@@ -138,8 +138,10 @@ func (s *AnimalTypesTestSuite) TestUpdateUser() {
 		Password:  "+_+diyor2005+_+",
 		UserName:  "D1YORTOP4EEK",
 	})
+
 	s.Suite.NoError(err)
 	s.Suite.NotNil(result)
+
 }
 func (s *AnimalTypesTestSuite) TearDownTest() {
 	s.CleanUpFunc()
