@@ -9,6 +9,15 @@ definitions:
       message:
         type: string
     type: object
+  models.ListUsers:
+    properties:
+      count:
+        type: integer
+      users:
+        items:
+          $ref: '#/definitions/models.UserBody'
+        type: array
+    type: object
   models.StandardErrorModel:
     properties:
       error:
@@ -19,6 +28,23 @@ definitions:
       email:
         type: string
       first_name:
+        type: string
+      image_url:
+        type: string
+      last_name:
+        type: string
+      password:
+        type: string
+      user_name:
+        type: string
+    type: object
+  models.UserBody:
+    properties:
+      email:
+        type: string
+      first_name:
+        type: string
+      id:
         type: string
       image_url:
         type: string
@@ -133,6 +159,38 @@ paths:
       summary: Verification
       tags:
       - Register
+  /v1/user/all/:
+    get:
+      consumes:
+      - application/json
+      description: GetAllUsers - Api for get users
+      parameters:
+      - description: page
+        in: query
+        name: page
+        type: integer
+      - description: limit
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ListUsers'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+      summary: GetAllUsers
+      tags:
+      - User
 securityDefinitions:
   ApiKeyAuth:
     in: header

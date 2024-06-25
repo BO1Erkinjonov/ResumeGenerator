@@ -28,6 +28,7 @@ type RouteOption struct {
 // @title Generate resume
 // @version 1.7
 // @host 18.158.24.26:9050
+// // @host localhost:9050
 // @securityDefinitions.apikey ApiKeyAuth
 // @in header
 // @name Authorization
@@ -46,13 +47,13 @@ func NewRoute(option RouteOption) *gin.Engine {
 		//BrokerProducer: option.BrokerProducer,
 	})
 
-	corsConfig := cors.DefaultConfig()
-	corsConfig.AllowAllOrigins = true
-	corsConfig.AllowCredentials = true
-	corsConfig.AllowHeaders = []string{"*"}
-	corsConfig.AllowBrowserExtensions = true
-	corsConfig.AllowMethods = []string{"*"}
-	router.Use(cors.New(corsConfig))
+	router.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"http://localhost:5173"}, // Замените на порт вашего локального фронтенда
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+	}))
 
 	router.Use(casbin.NewAuthorizer())
 
@@ -62,6 +63,9 @@ func NewRoute(option RouteOption) *gin.Engine {
 	auth.POST("/register/", HandlerV1.Register)
 	auth.POST("/verification/", HandlerV1.Verification)
 	auth.POST("/login/", HandlerV1.LogIn)
+
+	user := api.Group("/user")
+	user.GET("/all/", HandlerV1.GetAllUsers)
 
 	url := ginSwagger.URL("swagger/doc.json")
 	api.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))

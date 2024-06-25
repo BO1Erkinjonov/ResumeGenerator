@@ -22,3 +22,8 @@ type UserBody struct {
 type AccessToken struct {
 	Access string `json:"access"`
 }
+
+type ListUsers struct {
+	Users []UserBody
+	Count int
+}
