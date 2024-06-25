@@ -111,3 +111,115 @@ main.main.func1
 main.main.func1
 	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
 2024-06-24T10:42:17.187+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T20:58:47.267+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T20:58:47.269+0500	ERROR	app/main.go:30	app run	{"error": "listen tcp: lookup resume-generator on 127.0.0.53:53: server misbehaving"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-24T20:59:05.863+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-24T20:59:08.088+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-24T20:59:45.335+0500	ERROR	v1/auth.go:115	failed to email errored	{"error": "template: emailotp.html:72:69: executing \"emailotp.html\" at <.FullName>: can't evaluate field FullName in type string"}
+resume-generator/api/handlers/v1.(*HandlerV1).Register
+	/home/bobur/GolandProjects/ResumeGenerator/api/handlers/v1/auth.go:115
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+resume-generator/api.NewRoute.NewAuthorizer.func1
+	/home/bobur/GolandProjects/ResumeGenerator/api/middleware/casbin/casbin.go:24
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/recovery.go:102
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/logger.go:249
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:633
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:589
+net/http.serverHandler.ServeHTTP
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:2039
+2024-06-24T20:59:54.294+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-24T20:59:54.294+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T11:58:53.272+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T11:59:14.590+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T11:59:14.590+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T11:59:50.458+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T12:00:19.689+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T12:00:19.690+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T12:00:22.421+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T12:00:59.472+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T12:00:59.472+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T12:02:32.408+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T12:03:29.398+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T12:03:29.398+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T12:03:41.161+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T12:04:54.398+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T12:04:54.398+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T12:04:55.777+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T12:06:06.077+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T12:06:06.077+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T12:06:07.187+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T12:34:00.252+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T13:38:33.267+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T13:39:39.020+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T13:39:39.021+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T13:39:47.241+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T13:40:48.173+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T13:40:48.174+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T13:42:56.667+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T13:47:59.569+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T13:47:59.569+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T13:48:00.550+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T13:48:26.115+0500	ERROR	v1/user.go:122	Update user error	{"error": "error during sql build, users  update: ERROR: invalid input syntax for type uuid: \"\" (SQLSTATE 22P02)"}
+resume-generator/api/handlers/v1.(*HandlerV1).UpdateUser
+	/home/bobur/GolandProjects/ResumeGenerator/api/handlers/v1/user.go:122
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+resume-generator/api.NewRoute.NewAuthorizer.func1
+	/home/bobur/GolandProjects/ResumeGenerator/api/middleware/casbin/casbin.go:52
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/recovery.go:102
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/logger.go:249
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:633
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:589
+net/http.serverHandler.ServeHTTP
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:2039
+2024-06-25T13:58:14.130+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T13:58:14.131+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30

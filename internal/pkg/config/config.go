@@ -60,7 +60,7 @@ func NewConfig() (*Config, error) {
 	config.Context.Timeout = cast.ToInt(getEnv("CONTEXT_TIMEOUT", "5"))
 
 	// server configuration
-	config.Server.Host = getEnv("SERVER_HOST", "resume-generator")
+	config.Server.Host = getEnv("SERVER_HOST", "localhost")
 	config.Server.Port = getEnv("SERVER_PORT", ":9050")
 	config.Server.ReadTimeout = getEnv("SERVER_READ_TIMEOUT", "10s")
 	config.Server.WriteTimeout = getEnv("SERVER_WRITE_TIMEOUT", "10s")
@@ -70,12 +70,17 @@ func NewConfig() (*Config, error) {
 	config.DB.Host = getEnv("POSTGRES_HOST", "localhost")
 	config.DB.Port = getEnv("POSTGRES_PORT", "5432")
 	config.DB.User = getEnv("POSTGRES_USER", "postgres")
-	config.DB.Password = getEnv("POSTGRES_PASSWORD", "+_+diyor2005+_+")
+	config.DB.Password = getEnv("POSTGRES_PASSWORD", "123")
 	config.DB.SslMode = getEnv("POSTGRES_SSLMODE", "disable")
 	config.DB.Name = getEnv("POSTGRES_DATABASE", "generator_resume")
 
 	// token configuration
 	config.Token.Secret = getEnv("TOKEN_SECRET", "token_secret")
+	accessTTl, err := time.ParseDuration(getEnv("TOKEN_ACCESS_TTL", "1h"))
+	if err != nil {
+		return nil, err
+	}
+	config.Token.AccessTTL = accessTTl
 
 	return &config, nil
 }
