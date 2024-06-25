@@ -43,16 +43,15 @@ func NewRoute(option RouteOption) *gin.Engine {
 		Logger:         option.Logger,
 		ContextTimeout: option.ContextTimeout,
 		User:           option.User,
-
-		//BrokerProducer: option.BrokerProducer,
 	})
 
 	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:5173"}, // Замените на порт вашего локального фронтенда
-		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowAllOrigins:  true,
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
 		ExposeHeaders:    []string{"Content-Length"},
 		AllowCredentials: true,
+		MaxAge:           12 * time.Hour,
 	}))
 
 	router.Use(casbin.NewAuthorizer())
