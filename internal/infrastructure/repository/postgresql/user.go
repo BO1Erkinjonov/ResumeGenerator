@@ -139,7 +139,6 @@ func (u *UserRepo) CheckUniques(ctx context.Context, req *entity.FieldValueReq) 
 }
 
 func (u *UserRepo) GetAllUsers(ctx context.Context, req *entity.GetAllReq) ([]*entity.User, error) {
-
 	tosql := u.db.Sq.Builder.Select(u.userSelectQueryPrefix()).From(u.tableName)
 	if req.Field != "" && req.Values != "" {
 		tosql = tosql.Where(u.db.Sq.Equal(req.Field, req.Values))

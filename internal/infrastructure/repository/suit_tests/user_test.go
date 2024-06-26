@@ -33,6 +33,13 @@ func (s *UserTestSuite) SetupTest() {
 	s.Repository = repo.NewUserRepo(pgPool)
 	s.CleanUpFunc = pgPool.Close
 }
+func (s *UserTestSuite) TearDownTest() {
+	s.CleanUpFunc()
+}
+
+func TestUserTestSuite(t *testing.T) {
+	suite.Run(t, new(UserTestSuite))
+}
 
 func (s *UserTestSuite) TestUserCrud() {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*time.Duration(2))
@@ -108,12 +115,4 @@ func (s *UserTestSuite) TestUserCrud() {
 	resultDel, err := s.Repository.DeleteUserById(ctx, &entity.DeleteReq{ID: resp.ID})
 	s.Suite.NoError(err)
 	s.Suite.NotNil(resultDel)
-}
-
-func (s *UserTestSuite) TearDownTest() {
-	s.CleanUpFunc()
-}
-
-func TestUserTestSuite(t *testing.T) {
-	suite.Run(t, new(UserTestSuite))
 }
