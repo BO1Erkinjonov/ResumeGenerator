@@ -223,3 +223,343 @@ net/http.(*conn).serve
 2024-06-25T13:58:14.131+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
 main.main.func1
 	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T20:53:47.802+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T20:54:54.177+0500	ERROR	v1/user.go:122	Update user error	{"error": "error during sql build, users  update: ERROR: invalid input syntax for type uuid: \"\" (SQLSTATE 22P02)"}
+resume-generator/api/handlers/v1.(*HandlerV1).UpdateUser
+	/home/bobur/GolandProjects/ResumeGenerator/api/handlers/v1/user.go:122
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+resume-generator/api.NewRoute.NewAuthorizer.func1
+	/home/bobur/GolandProjects/ResumeGenerator/api/middleware/casbin/casbin.go:52
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/recovery.go:102
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/logger.go:249
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:633
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:589
+net/http.serverHandler.ServeHTTP
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:2039
+2024-06-25T20:56:13.498+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T20:56:13.499+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T20:56:17.111+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T20:56:17.182+0500	ERROR	v1/user.go:122	Update user error	{"error": "error during sql build, users  update: ERROR: invalid input syntax for type uuid: \"\" (SQLSTATE 22P02)"}
+resume-generator/api/handlers/v1.(*HandlerV1).UpdateUser
+	/home/bobur/GolandProjects/ResumeGenerator/api/handlers/v1/user.go:122
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+resume-generator/api.NewRoute.NewAuthorizer.func1
+	/home/bobur/GolandProjects/ResumeGenerator/api/middleware/casbin/casbin.go:52
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/recovery.go:102
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/logger.go:249
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:633
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:589
+net/http.serverHandler.ServeHTTP
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:2039
+2024-06-25T20:56:43.755+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T20:56:43.756+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T20:56:47.201+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T20:56:50.228+0500	ERROR	v1/user.go:122	Update user error	{"error": "error during sql build, users  update: ERROR: invalid input syntax for type uuid: \"\" (SQLSTATE 22P02)"}
+resume-generator/api/handlers/v1.(*HandlerV1).UpdateUser
+	/home/bobur/GolandProjects/ResumeGenerator/api/handlers/v1/user.go:122
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+resume-generator/api.NewRoute.NewAuthorizer.func1
+	/home/bobur/GolandProjects/ResumeGenerator/api/middleware/casbin/casbin.go:52
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/recovery.go:102
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/logger.go:249
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:633
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:589
+net/http.serverHandler.ServeHTTP
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:2039
+2024-06-25T20:57:10.991+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T20:57:10.992+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T20:57:14.185+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T20:57:14.841+0500	ERROR	v1/user.go:122	Update user error	{"error": "error during sql build, users  update: ERROR: invalid input syntax for type uuid: \"\" (SQLSTATE 22P02)"}
+resume-generator/api/handlers/v1.(*HandlerV1).UpdateUser
+	/home/bobur/GolandProjects/ResumeGenerator/api/handlers/v1/user.go:122
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+resume-generator/api.NewRoute.NewAuthorizer.func1
+	/home/bobur/GolandProjects/ResumeGenerator/api/middleware/casbin/casbin.go:52
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/recovery.go:102
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/logger.go:249
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:633
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:589
+net/http.serverHandler.ServeHTTP
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:2039
+2024-06-25T20:57:28.555+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T20:57:28.556+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T20:57:31.644+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T20:57:32.213+0500	ERROR	v1/user.go:122	Update user error	{"error": "error during sql build, users  update: ERROR: invalid input syntax for type uuid: \"\" (SQLSTATE 22P02)"}
+resume-generator/api/handlers/v1.(*HandlerV1).UpdateUser
+	/home/bobur/GolandProjects/ResumeGenerator/api/handlers/v1/user.go:122
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+resume-generator/api.NewRoute.NewAuthorizer.func1
+	/home/bobur/GolandProjects/ResumeGenerator/api/middleware/casbin/casbin.go:52
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/recovery.go:102
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/logger.go:249
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:633
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:589
+net/http.serverHandler.ServeHTTP
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:2039
+2024-06-25T20:57:57.607+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T20:57:57.607+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T20:58:01.212+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T20:58:03.505+0500	ERROR	v1/user.go:123	Update user error	{"error": "error during sql build, users  update: ERROR: invalid input syntax for type uuid: \"\" (SQLSTATE 22P02)"}
+resume-generator/api/handlers/v1.(*HandlerV1).UpdateUser
+	/home/bobur/GolandProjects/ResumeGenerator/api/handlers/v1/user.go:123
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+resume-generator/api.NewRoute.NewAuthorizer.func1
+	/home/bobur/GolandProjects/ResumeGenerator/api/middleware/casbin/casbin.go:52
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/recovery.go:102
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/logger.go:249
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:633
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:589
+net/http.serverHandler.ServeHTTP
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:2039
+2024-06-25T20:58:13.788+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T20:58:13.788+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T20:58:24.581+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T20:58:26.644+0500	ERROR	v1/user.go:123	Update user error	{"error": "error during sql build, users  update: ERROR: invalid input syntax for type uuid: \"\" (SQLSTATE 22P02)"}
+resume-generator/api/handlers/v1.(*HandlerV1).UpdateUser
+	/home/bobur/GolandProjects/ResumeGenerator/api/handlers/v1/user.go:123
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+resume-generator/api.NewRoute.NewAuthorizer.func1
+	/home/bobur/GolandProjects/ResumeGenerator/api/middleware/casbin/casbin.go:52
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/recovery.go:102
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/logger.go:249
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:633
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:589
+net/http.serverHandler.ServeHTTP
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:2039
+2024-06-25T20:58:33.837+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T20:58:33.838+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T20:58:37.555+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T20:58:38.088+0500	ERROR	v1/user.go:123	Update user error	{"error": "error during sql build, users  update: ERROR: invalid input syntax for type uuid: \"\" (SQLSTATE 22P02)"}
+resume-generator/api/handlers/v1.(*HandlerV1).UpdateUser
+	/home/bobur/GolandProjects/ResumeGenerator/api/handlers/v1/user.go:123
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+resume-generator/api.NewRoute.NewAuthorizer.func1
+	/home/bobur/GolandProjects/ResumeGenerator/api/middleware/casbin/casbin.go:52
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/recovery.go:102
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/logger.go:249
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:633
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:589
+net/http.serverHandler.ServeHTTP
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:2039
+2024-06-25T20:59:00.684+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T20:59:00.684+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T20:59:24.098+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T20:59:26.370+0500	ERROR	v1/user.go:123	Update user error	{"error": "error during sql build, users  update: ERROR: invalid input syntax for type uuid: \"\" (SQLSTATE 22P02)"}
+resume-generator/api/handlers/v1.(*HandlerV1).UpdateUser
+	/home/bobur/GolandProjects/ResumeGenerator/api/handlers/v1/user.go:123
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+resume-generator/api.NewRoute.NewAuthorizer.func1
+	/home/bobur/GolandProjects/ResumeGenerator/api/middleware/casbin/casbin.go:52
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/recovery.go:102
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/logger.go:249
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:633
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:589
+net/http.serverHandler.ServeHTTP
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:2039
+2024-06-25T21:00:30.254+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T21:00:30.254+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T21:00:32.495+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T21:00:34.968+0500	ERROR	v1/user.go:123	Update user error	{"error": "error during sql build, users  update: ERROR: invalid input syntax for type uuid: \"\" (SQLSTATE 22P02)"}
+resume-generator/api/handlers/v1.(*HandlerV1).UpdateUser
+	/home/bobur/GolandProjects/ResumeGenerator/api/handlers/v1/user.go:123
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+resume-generator/api.NewRoute.NewAuthorizer.func1
+	/home/bobur/GolandProjects/ResumeGenerator/api/middleware/casbin/casbin.go:52
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/recovery.go:102
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/logger.go:249
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:633
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:589
+net/http.serverHandler.ServeHTTP
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:2039
+2024-06-25T21:00:47.656+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T21:00:47.657+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T21:00:51.479+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T21:00:53.801+0500	ERROR	v1/user.go:123	Update user error	{"error": "error during sql build, users  update: ERROR: invalid input syntax for type uuid: \"\" (SQLSTATE 22P02)"}
+resume-generator/api/handlers/v1.(*HandlerV1).UpdateUser
+	/home/bobur/GolandProjects/ResumeGenerator/api/handlers/v1/user.go:123
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+resume-generator/api.NewRoute.NewAuthorizer.func1
+	/home/bobur/GolandProjects/ResumeGenerator/api/middleware/casbin/casbin.go:52
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.CustomRecoveryWithWriter.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/recovery.go:102
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.LoggerWithConfig.func1
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/logger.go:249
+github.com/gin-gonic/gin.(*Context).Next
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/context.go:185
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:633
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	/home/bobur/GolandProjects/ResumeGenerator/vendor/github.com/gin-gonic/gin/gin.go:589
+net/http.serverHandler.ServeHTTP
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/bobur/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.22.3.linux-amd64/src/net/http/server.go:2039
+2024-06-25T21:01:12.774+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T21:01:12.775+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T21:01:16.665+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-25T21:03:10.369+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-25T21:03:10.370+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30
+2024-06-25T21:03:57.181+0500	INFO	app/main.go:28	Listen: 	{"address": "localhost:9050"}
+2024-06-26T15:06:53.798+0500	INFO	app/main.go:39	api gateway service stops
+2024-06-26T15:06:53.801+0500	ERROR	app/main.go:30	app run	{"error": "http: Server closed"}
+main.main.func1
+	/home/bobur/GolandProjects/ResumeGenerator/cmd/app/main.go:30

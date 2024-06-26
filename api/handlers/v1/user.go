@@ -99,7 +99,7 @@ func (h *HandlerV1) UpdateUser(c *gin.Context) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*time.Duration(7))
 	defer cancel()
 
-	var body models.UserBody
+	var body models.UpdateUserReq
 	if err := c.ShouldBindJSON(&body); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"message": err.Error(),
@@ -107,10 +107,9 @@ func (h *HandlerV1) UpdateUser(c *gin.Context) {
 		h.log.Error("Update user error", zap.Error(err))
 		return
 	}
-
 	resp, err := h.user.UpdateUserById(ctx, &entity.UpdateUserReq{
-		UserId:    body.ID,
-		UserName:  body.Username,
+		UserId:    body.UserId,
+		UserName:  body.UserName,
 		FirstName: body.FirstName,
 		LastName:  body.LastName,
 		Password:  body.Password,
