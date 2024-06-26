@@ -18,6 +18,9 @@ type userUseCase struct {
 	repo User
 }
 
+func NewUserUseCase(repo User) User {
+	return &userUseCase{repo: repo}
+}
 func (u userUseCase) GetAllUsers(ctx context.Context, req *entity.GetAllReq) ([]*entity.User, error) {
 	return u.repo.GetAllUsers(ctx, req)
 }
@@ -32,10 +35,6 @@ func (u userUseCase) GetUserById(ctx context.Context, req *entity.FieldValueReq)
 
 func (u userUseCase) CheckUniques(ctx context.Context, user *entity.FieldValueReq) (*entity.Result, error) {
 	return u.repo.CheckUniques(ctx, user)
-}
-
-func NewUserUseCase(u User) *userUseCase {
-	return &userUseCase{u}
 }
 
 func (u userUseCase) DeleteUserById(ctx context.Context, req *entity.DeleteReq) (*entity.Result, error) {

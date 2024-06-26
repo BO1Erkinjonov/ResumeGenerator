@@ -32,6 +32,10 @@ import (
 // @Failure 500 {object} models.StandardErrorModel
 // @Router /v1/auth/register/ [post]
 func (h *HandlerV1) Register(c *gin.Context) {
+	c.Writer.Header().Set("Content-Type", "application/json")
+	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+	c.Writer.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+	c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	var (
 		body models.UserBody
 	)

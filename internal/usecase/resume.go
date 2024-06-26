@@ -18,6 +18,10 @@ type resumeUserCase struct {
 	repo Resume
 }
 
+func NewResume(repo Resume) Resume {
+	return &resumeUserCase{repo: repo}
+}
+
 func (uc *resumeUserCase) CreateResume(ctx context.Context,
 	resume *entity.Resume) (*entity.Resume, error) {
 	return uc.repo.CreateResume(ctx, resume)
