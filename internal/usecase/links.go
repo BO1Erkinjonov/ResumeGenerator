@@ -8,7 +8,6 @@ import (
 type Links interface {
 	CreateLink(ctx context.Context, link *entity.Link) (*entity.Link, error)
 	GetLinkById(ctx context.Context, req *entity.FieldValueReq) (*entity.Link, error)
-	CheckUniques(ctx context.Context, req *entity.FieldValueReq) (*entity.Link, error)
 	GetAllLinks(ctx context.Context, req *entity.GetAllReq) ([]*entity.Link, error)
 	DeleteLink(ctx context.Context, req *entity.DeleteReq) (*entity.Result, error)
 	UpdateLinkById(ctx context.Context, req *entity.LinksUpdateReq) (*entity.Link, error)
@@ -33,10 +32,6 @@ func (l *linkUserCase) DeleteLink(ctx context.Context, req *entity.DeleteReq) (*
 }
 func (l *linkUserCase) UpdateLinkById(ctx context.Context, req *entity.LinksUpdateReq) (*entity.Link, error) {
 	return l.links.UpdateLinkById(ctx, req)
-}
-
-func (l *linkUserCase) CheckUniques(ctx context.Context, req *entity.FieldValueReq) (*entity.Link, error) {
-	return l.links.CheckUniques(ctx, req)
 }
 
 func NewLinkUseCase(links Links) Links {

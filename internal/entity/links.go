@@ -14,6 +14,7 @@ type Link struct {
 }
 
 type LinksUpdateReq struct {
+	LinID    string
 	LinkName string `json:"link_name"`
 	LinkURL  string `json:"link_url"`
 }

@@ -93,6 +93,29 @@ func (s *LinkTestSuite) Test_AddLink() {
 	s.Suite.Equal(link.LinkName, resultLink.LinkName)
 	s.Suite.Equal(link.ResumeID, resultLink.ResumeID)
 
+	resultLink, err = s.Repository.UpdateLinkById(ctx, &entity.LinksUpdateReq{
+		LinID:    resultLink.ID,
+		LinkName: "qwert",
+		LinkURL:  "qwerl",
+	})
+
+	s.NotNil(resultLink)
+	s.NoError(err)
+
+	all, err := s.Repository.GetAllLinks(ctx, &entity.GetAllReq{
+		Field:  "id",
+		Values: resultLink.ID,
+		Limit:  20,
+	})
+	s.NotNil(all)
+	s.NoError(err)
+	resultLink, err = s.Repository.GetLinkById(ctx, &entity.FieldValueReq{
+		Field: "id",
+		Value: resultLink.ID,
+	})
+	s.NotNil(resultLink)
+	s.NoError(err)
+
 	res, err := s.Repository.DeleteLink(ctx, &entity.DeleteReq{ID: resultLink.ID})
 	s.NoError(err)
 	s.NotNil(res)
