@@ -10,7 +10,7 @@ type Links interface {
 	GetLinkById(ctx context.Context, req *entity.FieldValueReq) (*entity.Link, error)
 	CheckUniques(ctx context.Context, req *entity.FieldValueReq) (*entity.Link, error)
 	GetAllLinks(ctx context.Context, req *entity.GetAllReq) ([]*entity.Link, error)
-	DeleteLink(ctx context.Context, req *entity.DeleteReq) (*entity.Link, error)
+	DeleteLink(ctx context.Context, req *entity.DeleteReq) (*entity.Result, error)
 	UpdateLinkById(ctx context.Context, req *entity.LinksUpdateReq) (*entity.Link, error)
 }
 
@@ -28,7 +28,7 @@ func (l *linkUserCase) GetLinkById(ctx context.Context, req *entity.FieldValueRe
 	return l.links.GetLinkById(ctx, req)
 }
 
-func (l *linkUserCase) DeleteLink(ctx context.Context, req *entity.DeleteReq) (*entity.Link, error) {
+func (l *linkUserCase) DeleteLink(ctx context.Context, req *entity.DeleteReq) (*entity.Result, error) {
 	return l.links.DeleteLink(ctx, req)
 }
 func (l *linkUserCase) UpdateLinkById(ctx context.Context, req *entity.LinksUpdateReq) (*entity.Link, error) {

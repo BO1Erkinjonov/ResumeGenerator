@@ -9,7 +9,6 @@ import (
 
 //TODO::
 //type Links interface {
-//	CreateLink(ctx context.Context, link *entity.Link) (*entity.Link, error)
 //	GetLinkById(ctx context.Context, req *entity.FieldValueReq) (*entity.Link, error)
 //	CheckUniques(ctx context.Context, req *entity.FieldValueReq) (*entity.Link, error)
 //	GetAllLinks(ctx context.Context, req *entity.GetAllReq) ([]*entity.Link, error)
@@ -18,12 +17,12 @@ import (
 //}
 
 type LinkRepository struct {
-	db        postgres.PostgresDB
+	db        *postgres.PostgresDB
 	tableName string
 }
 
-func NewLinRepository(db postgres.PostgresDB) LinkRepository {
-	return LinkRepository{
+func NewLinRepository(db *postgres.PostgresDB) *LinkRepository {
+	return &LinkRepository{
 		db:        db,
 		tableName: "links",
 	}
@@ -45,7 +44,7 @@ func (l *LinkRepository) CreateLink(ctx context.Context, req *entity.Link) (*ent
 		"link_url":  req.LinkURL,
 	}
 	query, argc, err := l.db.Sq.Builder.Insert(l.tableName).
-		SetMap(data).Suffix(fmt.Sprint("RETURNING %s", l.
+		SetMap(data).Suffix(fmt.Sprintf("RETURNING %s", l.
 		selectLinkQuerySuffix())).ToSql()
 	if err != nil {
 		return nil, err
@@ -61,4 +60,13 @@ func (l *LinkRepository) CreateLink(ctx context.Context, req *entity.Link) (*ent
 		return nil, err
 	}
 	return &link, nil
+}
+
+func (l *LinkRepository) DeleteLink(ctx context.Context, req *entity.DeleteReq) (*entity.Result, error) {
+	user := UserRepo{
+		db:        l.db,
+		tableName: l.tableName,
+	}
+	req.IsHardDeleted = true
+	return user.DeleteUserById(ctx, req)
 }
