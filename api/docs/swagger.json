@@ -5,7 +5,7 @@
         "contact": {},
         "version": "1.7"
     },
-    "host": "localhost:9050",
+    "host": "18.158.24.26:9050",
     "paths": {
         "/v1/auth/login/": {
             "post": {
