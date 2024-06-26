@@ -51,10 +51,12 @@ func (a *App) Run() error {
 	// repositories initialization
 
 	user := repo.NewUserRepo(a.DB)
+	resume := repo.NewResumeRepo(a.DB)
 
 	// use case initialization
 
 	userUseCase := usecase.NewUserUseCase(user)
+	resumeUseCse := usecase.NewResume(resume)
 
 	// api init
 	handler := api.NewRoute(api.RouteOption{
@@ -62,6 +64,7 @@ func (a *App) Run() error {
 		Logger:         a.Logger,
 		Config:         a.Config,
 		User:           userUseCase,
+		Resume:         resumeUseCse,
 	})
 
 	// server init

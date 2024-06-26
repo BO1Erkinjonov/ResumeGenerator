@@ -15,6 +15,7 @@ type HandlerV1 struct {
 	cfg            *config.Config
 	jwthandler     token.JWTHandler
 	user           usecase.User
+	resume         usecase.Resume
 }
 
 // HandlerV1Config ...
@@ -24,6 +25,7 @@ type HandlerV1Config struct {
 	Config         *config.Config
 	User           usecase.User
 	JWThandler     token.JWTHandler
+	Resume         usecase.Resume
 }
 
 // New ...
@@ -34,5 +36,6 @@ func New(c *HandlerV1Config) *HandlerV1 {
 		cfg:            c.Config,
 		user:           c.User,
 		jwthandler:     c.JWThandler,
+		resume:         c.Resume,
 	}
 }

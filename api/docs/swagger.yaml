@@ -9,6 +9,13 @@ definitions:
       message:
         type: string
     type: object
+  models.ListResume:
+    properties:
+      resumes:
+        items:
+          $ref: '#/definitions/models.Resume'
+        type: array
+    type: object
   models.ListUsers:
     properties:
       count:
@@ -18,10 +25,66 @@ definitions:
           $ref: '#/definitions/models.UserBody'
         type: array
     type: object
+  models.ReqResume:
+    properties:
+      birth_date:
+        example: "2020-01-01"
+        type: string
+      category_id:
+        type: string
+      description:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      salary:
+        type: string
+    type: object
+  models.Resume:
+    properties:
+      birth_date:
+        example: "2020-01-01"
+        type: string
+      category_id:
+        type: string
+      description:
+        type: string
+      first_name:
+        type: string
+      id:
+        type: string
+      last_name:
+        type: string
+      salary:
+        type: string
+      user_id:
+        type: string
+      work_type:
+        type: string
+    type: object
   models.StandardErrorModel:
     properties:
       error:
         $ref: '#/definitions/models.Error'
+    type: object
+  models.UpdateResume:
+    properties:
+      birth_date:
+        example: "2020-01-01"
+        type: string
+      category_id:
+        type: string
+      description:
+        type: string
+      first_name:
+        type: string
+      id:
+        type: string
+      last_name:
+        type: string
+      salary:
+        type: string
     type: object
   models.UpdateUserReq:
     properties:
@@ -172,6 +235,188 @@ paths:
       summary: Verification
       tags:
       - Register
+  /v1/resume/all/:
+    get:
+      consumes:
+      - application/json
+      description: GetAllResume - Api for get resume
+      parameters:
+      - description: field
+        in: query
+        name: field
+        type: integer
+      - description: value
+        in: query
+        name: value
+        type: integer
+      - description: page
+        in: query
+        name: page
+        type: integer
+      - description: limit
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ListResume'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+      summary: GetAllResume
+      tags:
+      - Resume
+  /v1/resume/create/:
+    post:
+      consumes:
+      - application/json
+      description: CreateResume - Api for create resume
+      parameters:
+      - description: createResumeModel
+        in: body
+        name: CreateResume
+        schema:
+          $ref: '#/definitions/models.ReqResume'
+      - description: work_type
+        enum:
+        - offline
+        - online
+        - does not matter
+        in: query
+        name: work_type
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Resume'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+      security:
+      - ApiKeyAuth: []
+      summary: CreateResume
+      tags:
+      - Resume
+  /v1/resume/delete/:
+    delete:
+      consumes:
+      - application/json
+      description: DeleteResume - Api for get users
+      parameters:
+      - in: query
+        name: id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: boolean
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+      security:
+      - ApiKeyAuth: []
+      summary: DeleteResume
+      tags:
+      - Resume
+  /v1/resume/get/:
+    get:
+      consumes:
+      - application/json
+      description: GetResume - Api for get users
+      parameters:
+      - description: field
+        in: query
+        name: field
+        type: string
+      - description: value
+        in: query
+        name: value
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Resume'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+      summary: GetResume
+      tags:
+      - Resume
+  /v1/resume/update/:
+    put:
+      consumes:
+      - application/json
+      description: UpdateResume - Api for get users
+      parameters:
+      - description: updateUserModel
+        in: body
+        name: UpdateResume
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateResume'
+      - description: work_type
+        enum:
+        - offline
+        - online
+        - does not matter
+        in: query
+        name: work_type
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UserBody'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.StandardErrorModel'
+      security:
+      - ApiKeyAuth: []
+      summary: UpdateResume
+      tags:
+      - Resume
   /v1/user/all/:
     get:
       consumes:

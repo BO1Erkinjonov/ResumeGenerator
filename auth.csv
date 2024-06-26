@@ -11,7 +11,14 @@ p, unauthorized, /v1/auth/verification/, POST
 p, unauthorized, /v1/auth/login/, POST
 p, unauthorized, /v1/user/all/, GET
 p, unauthorized, /v1/user/get/, GET
+p, unauthorized, /v1/resume/all/, GET
+p, unauthorized, /v1/resume/get/, GET
+
+g, user, unauthorized
 
 p, user, /v1/user/update/, PUT
 p, user, /v1/user/delete/, DELETE
+p, user, /v1/resume/create/, POST
+p, user, /v1/resume/update/, PUT
+p, user, /v1/resume/delete/, DELETE
 

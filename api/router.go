@@ -22,6 +22,7 @@ type RouteOption struct {
 	Logger         *zap.Logger
 	Config         *config.Config
 	User           usecase.User
+	Resume         usecase.Resume
 }
 
 // NewRoute
@@ -43,6 +44,7 @@ func NewRoute(option RouteOption) *gin.Engine {
 		Logger:         option.Logger,
 		ContextTimeout: option.ContextTimeout,
 		User:           option.User,
+		Resume:         option.Resume,
 	})
 
 	router.Use(cors.New(cors.Config{
@@ -70,6 +72,14 @@ func NewRoute(option RouteOption) *gin.Engine {
 	user.GET("/all/", HandlerV1.GetAllUsers)
 	user.PUT("/update/", HandlerV1.UpdateUser)
 	user.DELETE("/delete/", HandlerV1.DeleteUser)
+
+	// resume
+	resume := api.Group("/resume")
+	resume.POST("/create/", HandlerV1.CreateResume)
+	resume.GET("/all/", HandlerV1.GetAllResume)
+	resume.GET("/get/", HandlerV1.GetResume)
+	resume.PUT("/update/", HandlerV1.UpdateResume)
+	resume.DELETE("/delete/", HandlerV1.DeleteResume)
 
 	url := ginSwagger.URL("swagger/doc.json")
 	api.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
