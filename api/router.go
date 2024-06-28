@@ -28,7 +28,7 @@ type RouteOption struct {
 // NewRoute
 // @title Generate resume
 // @version 1.7
-// @host 18.158.24.26:9050
+// @host 18.199.83.81:9050
 // // @host localhost:9050
 // @securityDefinitions.apikey ApiKeyAuth
 // @in header

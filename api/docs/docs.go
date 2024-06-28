@@ -870,7 +870,7 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.7",
-	Host:             "18.158.24.26:9050",
+	Host:             "18.199.83.81:9050",
 	BasePath:         "",
 	Schemes:          []string{},
 	Title:            "Generate resume",
